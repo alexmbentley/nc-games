@@ -21,7 +21,9 @@ const NavBar = ({ everyReview }) => {
         {categories.map((category) => {
           return (
             <Link key={category.slug} to={`/reviews/category/${category.slug}`}>
-              <p>{category.slug}</p>
+              <p>
+                {category.slug.charAt(0).toUpperCase() + category.slug.slice(1)}
+              </p>
             </Link>
           );
         })}

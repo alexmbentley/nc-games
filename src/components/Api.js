@@ -15,3 +15,9 @@ export const getCategories = () => {
     `https://alexs-backend-project.herokuapp.com/api/categories`
   );
 };
+
+export const getSingleReview = (id) => {
+  return axios.get(
+    `https://alexs-backend-project.herokuapp.com/api/reviews/${id}`
+  );
+};
