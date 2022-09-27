@@ -9,3 +9,9 @@ export const getCatReviews = (category) => {
     `https://alexs-backend-project.herokuapp.com/api/reviews?category=${category}`
   );
 };
+
+export const getCategories = () => {
+  return axios.get(
+    `https://alexs-backend-project.herokuapp.com/api/categories`
+  );
+};

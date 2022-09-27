@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { getReviews } from './Api';
+import NavBar from './NavBar';
 import ReviewCard from './ReviewCard';
 
 const AllReviews = () => {
@@ -20,6 +21,7 @@ const AllReviews = () => {
       {everyReview.map((review) => (
         <ReviewCard key={review.review_id} review={review} />
       ))}
+      <NavBar key={everyReview.review_id} everyReview={everyReview} />;
     </div>
   );
 };
