@@ -1,7 +1,11 @@
 import axios from 'axios';
 
-const getReviews = () => {
+export const getReviews = () => {
   return axios.get(`https://alexs-backend-project.herokuapp.com/api/reviews`);
 };
 
-export default getReviews;
+export const getCatReviews = (category) => {
+  return axios.get(
+    `https://alexs-backend-project.herokuapp.com/api/reviews?category=${category}`
+  );
+};
