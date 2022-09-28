@@ -10,6 +10,7 @@ const SingleReview = () => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [comError, setComError] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const SingleReview = () => {
       .catch((error) => {
         if (error) {
           setIsLoading(false);
-          setIsError(true);
+          setComError(true);
         }
       });
   }, [id]);
@@ -57,6 +58,13 @@ const SingleReview = () => {
     return (
       <div>
         <h2 className="pageTitle">ID does not exist</h2>
+      </div>
+    );
+
+  if (comError)
+    return (
+      <div>
+        <h2 className="pageTitle">No comments for this post</h2>
       </div>
     );
 };
