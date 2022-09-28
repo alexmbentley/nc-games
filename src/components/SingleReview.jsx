@@ -10,14 +10,11 @@ const SingleReview = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const { id } = useParams();
-  let catRev = [];
 
   useEffect(() => {
     getSingleReview(id)
       .then(({ data }) => {
-        console.log(data, '<<this is data');
-        setSingleReview([data.Review]);
-
+        setSingleReview(data.Review);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -27,14 +24,11 @@ const SingleReview = () => {
         }
       });
   }, [id]);
-  console.log(singleReview, 'single review after zpush');
-  if (singleReview.length !== 0)
+  if (Object.hasOwn(singleReview, 'review_id'))
     return (
       <div>
         <h2 className="pageTitle">Review</h2>
-        {singleReview.map((review) => (
-          <SingleReviewCard key={review.review_id} review={review} />
-        ))}
+        <SingleReviewCard key={singleReview.review_id} review={singleReview} />
       </div>
     );
 

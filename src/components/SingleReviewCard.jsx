@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 const SingleReviewCard = ({ review }) => {
   return (
     <div className="reviewCard">
