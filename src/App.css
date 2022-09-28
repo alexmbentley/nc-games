@@ -57,6 +57,16 @@
   margin-left: 10px;
 }
 
+.commentCard{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  margin: 3%;
+  text-align: left;
+  text-indent: 1em;
+  font-family: arial;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

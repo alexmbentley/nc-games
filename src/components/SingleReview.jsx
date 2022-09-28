@@ -1,12 +1,13 @@
-import { getSingleReview } from './Api';
+import { getComments, getSingleReview } from './Api';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import ReviewCard from './ReviewCard';
 import { useParams } from 'react-router';
 import SingleReviewCard from './SingleReviewCard';
+import CommentCard from './CommentCard';
 
 const SingleReview = () => {
   const [singleReview, setSingleReview] = useState([]);
+  const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const { id } = useParams();
@@ -24,11 +25,29 @@ const SingleReview = () => {
         }
       });
   }, [id]);
+
+  useEffect(() => {
+    getComments(id)
+      .then(({ data }) => {
+        setComments(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        if (error) {
+          setIsLoading(false);
+          setIsError(true);
+        }
+      });
+  }, [id]);
+
   if (Object.hasOwn(singleReview, 'review_id'))
     return (
       <div>
         <h2 className="pageTitle">Review</h2>
         <SingleReviewCard key={singleReview.review_id} review={singleReview} />
+        {comments.map((comment) => (
+          <CommentCard key={comment.comment_id} comment={comment} />
+        ))}
       </div>
     );
 

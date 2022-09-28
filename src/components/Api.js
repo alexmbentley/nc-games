@@ -21,3 +21,16 @@ export const getSingleReview = (id) => {
     `https://alexs-backend-project.herokuapp.com/api/reviews/${id}`
   );
 };
+
+export const addVote = (id, votesObj) => {
+  return axios.patch(
+    `https://alexs-backend-project.herokuapp.com/api/reviews/${id}`,
+    votesObj
+  );
+};
+
+export const getComments = (id) => {
+  return axios.get(
+    `https://alexs-backend-project.herokuapp.com/api/reviews/${id}/comments`
+  );
+};
