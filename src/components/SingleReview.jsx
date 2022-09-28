@@ -4,12 +4,14 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import SingleReviewCard from './SingleReviewCard';
 import CommentCard from './CommentCard';
+import CommentPoster from './CommentPoster';
 
 const SingleReview = () => {
-  const [singleReview, setSingleReview] = useState([]);
+  const [singleReview, setSingleReview] = useState({});
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [comError, setComError] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -19,10 +21,8 @@ const SingleReview = () => {
         setIsLoading(false);
       })
       .catch((error) => {
-        if (error) {
-          setIsLoading(false);
-          setIsError(true);
-        }
+        setIsLoading(false);
+        setIsError(true);
       });
   }, [id]);
 
@@ -33,10 +33,8 @@ const SingleReview = () => {
         setIsLoading(false);
       })
       .catch((error) => {
-        if (error) {
-          setIsLoading(false);
-          setIsError(true);
-        }
+        setIsLoading(false);
+        setComError(true);
       });
   }, [id]);
 
@@ -44,6 +42,10 @@ const SingleReview = () => {
     return (
       <div>
         <h2 className="pageTitle">Review</h2>
+        <CommentPoster
+          key={singleReview.review_id}
+          reviewId={singleReview.review_id}
+        />
         <SingleReviewCard key={singleReview.review_id} review={singleReview} />
         {comments.map((comment) => (
           <CommentCard key={comment.comment_id} comment={comment} />
@@ -57,6 +59,13 @@ const SingleReview = () => {
     return (
       <div>
         <h2 className="pageTitle">ID does not exist</h2>
+      </div>
+    );
+
+  if (comError)
+    return (
+      <div>
+        <h2 className="pageTitle">No comments for this post</h2>
       </div>
     );
 };

@@ -34,3 +34,9 @@ export const getComments = (id) => {
     `https://alexs-backend-project.herokuapp.com/api/reviews/${id}/comments`
   );
 };
+
+export const postComment = (id) => {
+  return axios.post(
+    `https://alexs-backend-project.herokuapp.com/api/reviews/${id}/comments`
+  );
+};
