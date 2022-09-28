@@ -5,21 +5,19 @@ const SingleReviewCard = ({ review }) => {
   const [votes, setVotes] = useState(0);
   const [revId, setRevId] = useState(review.review_id);
   const [isError, setIsError] = useState(null);
+  const [buttonStatus, setButtonStatus] = useState(false);
   const votesObj = { inc_votes: 1 };
 
-  const handleClick = (event) => {
-    event.currentTarget.disabled = true;
-  };
   const sendVote = (event) => {
     if (votes === 0) {
       setIsError(null);
       setVotes(votes + 1);
+      setButtonStatus(true);
       addVote(revId, votesObj).catch((err) => {
-        setVotes(votes - 1);
+        setVotes(0);
+        setButtonStatus(false);
         setIsError('Something went wrong');
       });
-    } else {
-      handleClick(event);
     }
   };
 
@@ -39,7 +37,9 @@ const SingleReviewCard = ({ review }) => {
       <p>{review.review_body}</p>
       <p>Votes: {review.votes + votes}</p>
       <p>{isError}</p>
-      <button onClick={sendVote}>Upvote</button>
+      <button disabled={buttonStatus} onClick={sendVote}>
+        Upvote
+      </button>
     </div>
   );
 };
