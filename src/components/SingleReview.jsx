@@ -1,7 +1,6 @@
 import { getSingleReview } from './Api';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import ReviewCard from './ReviewCard';
 import { useParams } from 'react-router';
 import SingleReviewCard from './SingleReviewCard';
 
