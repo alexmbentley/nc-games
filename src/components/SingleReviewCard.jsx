@@ -23,7 +23,6 @@ const SingleReviewCard = ({ review }) => {
 
   return (
     <div className="reviewCard">
-      {console.log(review, '<<Review in here')}
       <h3 className="reviewTitle">{review.title}</h3>
       <p>User: {review.owner}</p>
       <img

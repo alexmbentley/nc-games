@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import SingleReviewCard from './SingleReviewCard';
+import CommentCard from './CommentCard';
 
 const SingleReview = () => {
   const [singleReview, setSingleReview] = useState([]);
@@ -28,7 +29,6 @@ const SingleReview = () => {
   useEffect(() => {
     getComments(id)
       .then(({ data }) => {
-        console.log(data, '<<< comments data');
         setComments(data);
         setIsLoading(false);
       })
@@ -45,6 +45,9 @@ const SingleReview = () => {
       <div>
         <h2 className="pageTitle">Review</h2>
         <SingleReviewCard key={singleReview.review_id} review={singleReview} />
+        {comments.map((comment) => (
+          <CommentCard key={comment.comment_id} comment={comment} />
+        ))}
       </div>
     );
 
