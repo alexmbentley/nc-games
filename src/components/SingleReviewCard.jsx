@@ -1,12 +1,8 @@
-import { Link } from 'react-router-dom';
-
-const ReviewCard = ({ review }) => {
+const SingleReviewCard = ({ review }) => {
   return (
     <div className="reviewCard">
       {console.log(review, '<<Review in here')}
-      <Link to={`/reviews/id/${review.review_id}`} key={review.review_id}>
-        <h3 className="reviewTitle">{review.title}</h3>
-      </Link>
+      <h3 className="reviewTitle">{review.title}</h3>
       <p>User: {review.owner}</p>
       <img
         className="reviewImage"
@@ -14,10 +10,11 @@ const ReviewCard = ({ review }) => {
         alt={review.title}
       ></img>
       <p>Game Designer: {review.designer}</p>
+      <p>Category: {review.category}</p>
       <p>Posted on: {review.created_at.substring(0, 10)}</p>
       <p>{review.review_body}</p>
     </div>
   );
 };
 
-export default ReviewCard;
+export default SingleReviewCard;

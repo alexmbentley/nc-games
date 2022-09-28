@@ -9,8 +9,7 @@ const CategoryReviews = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const { category } = useParams();
-  let catRev = [];
-  console.log(category, '<< category');
+
   useEffect(() => {
     getCatReviews(category)
       .then(({ data }) => {
