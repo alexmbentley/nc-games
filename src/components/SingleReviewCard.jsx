@@ -5,16 +5,24 @@ const SingleReviewCard = ({ review }) => {
   const [votes, setVotes] = useState(0);
   const [revId, setRevId] = useState(review.review_id);
   const [isError, setIsError] = useState(null);
+  const votesObj = { inc_votes: 1 };
 
-  let votesObj = { inc_votes: 1 };
-  const sendVote = () => {
-    setIsError(null);
-    setVotes(votes + 1);
-    addVote(revId, votesObj).catch((err) => {
-      setVotes(votes - 1);
-      setIsError('Something went wrong');
-    });
+  const handleClick = (event) => {
+    event.currentTarget.disabled = true;
   };
+  const sendVote = (event) => {
+    if (votes === 0) {
+      setIsError(null);
+      setVotes(votes + 1);
+      addVote(revId, votesObj).catch((err) => {
+        setVotes(votes - 1);
+        setIsError('Something went wrong');
+      });
+    } else {
+      handleClick(event);
+    }
+  };
+
   return (
     <div className="reviewCard">
       {console.log(review, '<<Review in here')}

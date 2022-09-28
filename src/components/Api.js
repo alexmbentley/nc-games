@@ -28,3 +28,9 @@ export const addVote = (id, votesObj) => {
     votesObj
   );
 };
+
+export const getComments = (id) => {
+  return axios.get(
+    `https://alexs-backend-project.herokuapp.com/api/reviews/${id}/comments`
+  );
+};
