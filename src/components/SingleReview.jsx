@@ -42,14 +42,24 @@ const SingleReview = () => {
     return (
       <div>
         <h2 className="pageTitle">Review</h2>
-        <CommentPoster
-          key={singleReview.review_id}
-          reviewId={singleReview.review_id}
-        />
         <SingleReviewCard key={singleReview.review_id} review={singleReview} />
-        {comments.map((comment) => (
-          <CommentCard key={comment.comment_id} comment={comment} />
-        ))}
+
+        <CommentPoster
+          key={singleReview.votes}
+          reviewId={singleReview.review_id}
+          setComments={setComments}
+        />
+        {Array.isArray(comments) ? (
+          <div>
+            {comments.map((comment) => (
+              <CommentCard key={comment.comment_id} comment={comment} />
+            ))}
+          </div>
+        ) : (
+          <>
+            <p className="commentCard">No Comments for this post</p>
+          </>
+        )}
       </div>
     );
 

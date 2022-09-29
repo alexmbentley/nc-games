@@ -15,7 +15,6 @@ const CategoryReviews = () => {
       .then(({ data }) => {
         setCatReviews(data.reviews);
         setIsLoading(false);
-        console.log(catReviews);
       })
       .catch((error) => {
         if (error) {

@@ -66,6 +66,20 @@
   font-family: arial;
 }
 
+.commentPoster{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  height: 8em;
+  margin: 3%;
+  text-align: left;
+  text-indent: 1em;
+  font-family: arial;
+}
+
+.commentBox{
+  width:90%;
+  height: 6em;
+}
 
 @keyframes App-logo-spin {
   from {
