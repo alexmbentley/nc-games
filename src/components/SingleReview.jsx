@@ -11,6 +11,7 @@ const SingleReview = () => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [comError, setComError] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -26,11 +27,15 @@ const SingleReview = () => {
   }, [id]);
 
   useEffect(() => {
-    getComments(id).then(({ data }) => {
-      setComments(data);
-      console.log(comments, '<<< comments');
-      setIsLoading(false);
-    });
+    getComments(id)
+      .then(({ data }) => {
+        setComments(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        setComError(true);
+      });
   }, [id]);
 
   if (Object.hasOwn(singleReview, 'review_id'))
@@ -38,10 +43,11 @@ const SingleReview = () => {
       <div>
         <h2 className="pageTitle">Review</h2>
         <SingleReviewCard key={singleReview.review_id} review={singleReview} />
+
         <CommentPoster
-          key={singleReview.votes}
+          key={singleReview.review_id}
           reviewId={singleReview.review_id}
-          comments={comments}
+          setComments={setComments}
         />
         {Array.isArray(comments) ? (
           <div>
@@ -64,6 +70,13 @@ const SingleReview = () => {
     return (
       <div>
         <h2 className="pageTitle">ID does not exist</h2>
+      </div>
+    );
+
+  if (comError)
+    return (
+      <div>
+        <h2 className="pageTitle">No comments for this post</h2>
       </div>
     );
 };

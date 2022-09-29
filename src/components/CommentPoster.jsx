@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { getComments, postComment } from './Api';
 import CommentCard from './CommentCard';
 
-const CommentPoster = ({ reviewId, comments }) => {
+const CommentPoster = ({ reviewId, setComments }) => {
   const [user, setUser] = useState('jessjelly');
   const [formBody, setFormBody] = useState('');
   const [commentReturn, setCommentReturn] = useState({});
@@ -26,31 +26,41 @@ const CommentPoster = ({ reviewId, comments }) => {
     m.getUTCSeconds();
 
   const handleSubmit = (e, props) => {
-    console.log(comments, '<<< set comments');
+    console.log(setComments, '<<< set comments');
     e.preventDefault();
     let commentObj = { username: user, body: formBody };
     let testObj = {
       author: user,
       body: formBody,
-      comment_id: 9999999,
-      created_at: m,
-      review_id: 999999,
+      comment_id: 99999,
+      created_at: dateString,
+      review_id: 99999,
       votes: 0,
     };
-    console.log(commentObj, '<< comment obj');
+    setComments((comments) => {
+      let newComment = [...comments];
+      newComment.unshift(testObj);
+      return newComment;
+    });
+
     postComment(reviewId, commentObj)
       .then(({ data }) => {
-        console.log(data, '<< returned data');
         setCommentReturn(data);
         setIsLoading(false);
-        console.log(comments, '<<< mutated comments');
         setCommentComplete('Comment sent!');
         setFormBody('');
       })
       .catch((error) => {
         setIsLoading(false);
-        setIsError(true);
+        setCommentComplete(
+          'Error posting comment. Please refresh page and try again.'
+        );
         setCommentComplete(false);
+        setComments((comments) => {
+          let newComment = [...comments];
+          newComment.shift();
+          return newComment;
+        });
       });
   };
   return (
