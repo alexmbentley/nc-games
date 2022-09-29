@@ -45,13 +45,12 @@ const SingleReview = () => {
         <SingleReviewCard key={singleReview.review_id} review={singleReview} />
 
         <CommentPoster
-          key={singleReview.review_id}
+          key={singleReview.votes}
           reviewId={singleReview.review_id}
           setComments={setComments}
         />
         {Array.isArray(comments) ? (
           <div>
-            {console.log(comments, '<<< inside comments')}
             {comments.map((comment) => (
               <CommentCard key={comment.comment_id} comment={comment} />
             ))}
