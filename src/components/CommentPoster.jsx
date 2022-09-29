@@ -26,7 +26,6 @@ const CommentPoster = ({ reviewId, setComments }) => {
     m.getUTCSeconds();
 
   const handleSubmit = (e, props) => {
-    console.log(setComments, '<<< set comments');
     e.preventDefault();
     let commentObj = { username: user, body: formBody };
     let testObj = {
