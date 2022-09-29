@@ -14,10 +14,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/reviews" element={<AllReviews />} />
-        <Route
-          path="/reviews/category/:category"
-          element={<CategoryReviews />}
-        />
+        <Route path="/reviews/category/:category" element={<AllReviews />} />
         <Route path="/reviews/id/:id" element={<SingleReview />} />
       </Routes>
     </BrowserRouter>
