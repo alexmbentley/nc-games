@@ -8,17 +8,26 @@ const AllReviews = () => {
   const param = useParams();
   const [everyReview, setEveryReview] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const [sortBy, setSortBy] = useState();
   const [orderBy, setOrderBy] = useState('asc');
 
   useEffect(() => {
-    getReviews(param, sortBy, orderBy).then(({ data }) => {
-      setEveryReview(data.reviews);
-      setIsLoading(false);
-    });
+    getReviews(param, sortBy, orderBy)
+      .then(({ data }) => {
+        setIsError(false);
+        setEveryReview(data.reviews);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        setIsError(true);
+      });
   }, [param, sortBy, orderBy]);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <h3>Loading...</h3>;
+
+  if (isError) return <h3>Category does not exist</h3>;
 
   return (
     <div>
