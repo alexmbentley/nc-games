@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import AllReviews from './components/AllReviews';
 import CategoryReviews from './components/CategoryReviews';
 import SingleReview from './components/SingleReview';
+import { useState } from 'react';
 
 function App() {
   return (

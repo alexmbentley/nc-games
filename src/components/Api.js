@@ -38,10 +38,18 @@ export const getComments = (id) => {
 };
 
 export const postComment = (id, commentObj) => {
-  console.log(id, '<<< id in api');
-  console.log(commentObj, '<< in api object');
-  return axios.post(
-    `https://alexs-backend-project.herokuapp.com/api/reviews/${id}/comments`,
-    commentObj
+  return axios
+    .post(
+      `https://alexs-backend-project.herokuapp.com/api/reviews/${id}/comments`,
+      commentObj
+    )
+    .then((response) => {
+      return response;
+    });
+};
+
+export const deleteComment = (id) => {
+  return axios.delete(
+    `https://alexs-backend-project.herokuapp.com/api/comments/${id}`
   );
 };
