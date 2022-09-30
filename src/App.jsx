@@ -6,6 +6,7 @@ import AllReviews from './components/AllReviews';
 import SingleReview from './components/SingleReview';
 import { useState } from 'react';
 import Error from './components/Error';
+import Home from './components/Home';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Header />
       <NavBar />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/reviews" element={<AllReviews />} />
         <Route path="/reviews/category/:category" element={<AllReviews />} />
         <Route path="/reviews/id/:id" element={<SingleReview />} />

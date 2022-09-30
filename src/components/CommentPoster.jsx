@@ -53,12 +53,6 @@ const CommentPoster = ({ reviewId, setComments, user }) => {
         setCommentComplete(
           'Error posting comment. Please refresh page and try again.'
         );
-        setCommentComplete(false);
-        setComments((comments) => {
-          let newComment = [...comments];
-          newComment.shift();
-          return newComment;
-        });
       });
   };
 

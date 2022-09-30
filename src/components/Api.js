@@ -7,9 +7,6 @@ export const getReviews = (param, sortBy, orderBy) => {
     })
     .then((response) => {
       return response;
-    })
-    .catch((error) => {
-      return error;
     });
 };
 

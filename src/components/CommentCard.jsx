@@ -7,7 +7,6 @@ const CommentCard = ({ comment, user }) => {
   const handleDelete = (e) => {
     e.preventDefault();
     deleteComment(comment.comment_id).then(({ data }) => {
-      console.log(data, '<<< deleted comment');
       setCommentDeleted(true);
     });
   };
