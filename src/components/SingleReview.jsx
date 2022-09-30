@@ -51,7 +51,7 @@ const SingleReview = () => {
           setComments={setComments}
           user={user}
         />
-        {Array.isArray(comments) ? (
+        {comments.length !== 0 ? (
           <div>
             {comments.map((comment) => (
               <CommentCard

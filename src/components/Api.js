@@ -1,15 +1,13 @@
 import axios from 'axios';
 
 export const getReviews = (param, sortBy, orderBy) => {
-  return axios.get(`https://alexs-backend-project.herokuapp.com/api/reviews/`, {
-    params: { category: param.category, sort_by: sortBy, order: orderBy },
-  });
-};
-
-export const getCatReviews = (category) => {
-  return axios.get(
-    `https://alexs-backend-project.herokuapp.com/api/reviews?category=${category}`
-  );
+  return axios
+    .get(`https://alexs-backend-project.herokuapp.com/api/reviews/`, {
+      params: { category: param.category, sort_by: sortBy, order: orderBy },
+    })
+    .then((response) => {
+      return response;
+    });
 };
 
 export const getCategories = () => {
