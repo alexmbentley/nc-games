@@ -1,38 +1,14 @@
 import { useState } from 'react';
-import { getComments, postComment } from './Api';
-import CommentCard from './CommentCard';
+import { postComment } from './Api';
 
 const CommentPoster = ({ reviewId, setComments, user }) => {
   const [formBody, setFormBody] = useState('');
   const [commentReturn, setCommentReturn] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
   const [commentComplete, setCommentComplete] = useState('Add a comment...');
   const textDisabled = formBody.length === 0;
 
-  let m = new Date();
-  const dateString =
-    m.getUTCFullYear() +
-    '-' +
-    (m.getUTCMonth() + 1) +
-    '-' +
-    m.getUTCDate() +
-    ' ' +
-    m.getUTCHours() +
-    ':' +
-    m.getUTCMinutes() +
-    ':' +
-    m.getUTCSeconds();
-
-  let testObj = {
-    author: user,
-    body: formBody,
-    comment_id: 99999,
-    created_at: dateString,
-    review_id: 99999,
-    votes: 0,
-  };
-  const handleSubmit = (e, props) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
     setCommentComplete('Comment sending...');

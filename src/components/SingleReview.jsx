@@ -8,7 +8,7 @@ import CommentPoster from './CommentPoster';
 
 const SingleReview = () => {
   const [singleReview, setSingleReview] = useState({});
-  const [user, setUser] = useState('jessjelly');
+  const user = 'jessjelly';
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);

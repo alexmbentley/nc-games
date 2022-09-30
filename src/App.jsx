@@ -4,7 +4,6 @@ import Header from './components/Header';
 import NavBar from './components/NavBar';
 import AllReviews from './components/AllReviews';
 import SingleReview from './components/SingleReview';
-import { useState } from 'react';
 import Error from './components/Error';
 import Home from './components/Home';
 
