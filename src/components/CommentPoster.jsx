@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { getComments, postComment } from './Api';
 import CommentCard from './CommentCard';
 
-const CommentPoster = ({ reviewId, setComments }) => {
-  const [user, setUser] = useState('jessjelly');
+const CommentPoster = ({ reviewId, setComments, user }) => {
   const [formBody, setFormBody] = useState('');
   const [commentReturn, setCommentReturn] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -25,29 +24,29 @@ const CommentPoster = ({ reviewId, setComments }) => {
     ':' +
     m.getUTCSeconds();
 
+  let testObj = {
+    author: user,
+    body: formBody,
+    comment_id: 99999,
+    created_at: dateString,
+    review_id: 99999,
+    votes: 0,
+  };
   const handleSubmit = (e, props) => {
     e.preventDefault();
+    setIsLoading(true);
+    setCommentComplete('Comment sending...');
     let commentObj = { username: user, body: formBody };
-    let testObj = {
-      author: user,
-      body: formBody,
-      comment_id: 99999,
-      created_at: dateString,
-      review_id: 99999,
-      votes: 0,
-    };
-    setComments((comments) => {
-      let newComment = [...comments];
-      newComment.unshift(testObj);
-      return newComment;
-    });
-
     postComment(reviewId, commentObj)
       .then(({ data }) => {
-        setCommentReturn(data);
+        setComments((currentComments) => {
+          return [data.comment, ...currentComments];
+        });
+        setCommentReturn(data.comment);
         setIsLoading(false);
-        setCommentComplete('Comment sent!');
+        setCommentComplete('Comment posted!');
         setFormBody('');
+        return commentReturn;
       })
       .catch((error) => {
         setIsLoading(false);
@@ -62,12 +61,13 @@ const CommentPoster = ({ reviewId, setComments }) => {
         });
       });
   };
+
   return (
     <div className="commentPoster">
       <form onSubmit={handleSubmit}>
         <label>
           {commentComplete}
-          <input
+          <textarea
             value={formBody}
             onChange={(event) => setFormBody(event.target.value)}
             className="commentBox"
@@ -75,7 +75,7 @@ const CommentPoster = ({ reviewId, setComments }) => {
             name="comment"
           />
         </label>
-        <button disabled={textDisabled} type="sumbit">
+        <button disabled={textDisabled || isLoading} type="sumbit">
           Submit
         </button>
       </form>

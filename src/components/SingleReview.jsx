@@ -8,6 +8,7 @@ import CommentPoster from './CommentPoster';
 
 const SingleReview = () => {
   const [singleReview, setSingleReview] = useState({});
+  const [user, setUser] = useState('jessjelly');
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -29,7 +30,7 @@ const SingleReview = () => {
   useEffect(() => {
     getComments(id)
       .then(({ data }) => {
-        setComments(data);
+        setComments(data.reverse());
         setIsLoading(false);
       })
       .catch((error) => {
@@ -48,11 +49,16 @@ const SingleReview = () => {
           key={singleReview.votes}
           reviewId={singleReview.review_id}
           setComments={setComments}
+          user={user}
         />
         {Array.isArray(comments) ? (
           <div>
             {comments.map((comment) => (
-              <CommentCard key={comment.comment_id} comment={comment} />
+              <CommentCard
+                key={comment.comment_id}
+                comment={comment}
+                user={user}
+              />
             ))}
           </div>
         ) : (
