@@ -1,8 +1,14 @@
-Alex's NC game reviews front end project.
+# Alex's NC game reviews front end project
+
+
+[Link to this site hosted on netlify](https://main--prismatic-hummingbird-1be272.netlify.app/)
+
+[Link to my backend project where the data is being pulled from](https://alexs-backend-project.herokuapp.com/api)
+
 
 This application allows users to read game reviews picked up and stored on my backend server. Features include sorting by category, date, tile and user with the functionality to post comments and upvotes reviews.
 
-Must have node v16.16.0 to run.
+Must have Node v16.16.0 or above to run.
 
 Run the command 'node --vesrion' to check your version of Node.
 If it is older than the version above please run
