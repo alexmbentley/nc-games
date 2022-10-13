@@ -1,10 +1,10 @@
 const SingleReviewCard = ({ review }) => {
   return (
-    <div className="reviewCard">
+    <div className="singleReview">
       <h3 className="reviewTitle">{review.title}</h3>
       <p>User: {review.owner}</p>
       <img
-        className="reviewImage"
+        className="singleReviewImage"
         src={review.review_img_url}
         alt={review.title}
       ></img>

@@ -90,6 +90,32 @@
   text-align: center;
 }
 
+.singleReviewPage{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 30%;
+}
+
+.singleReview{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  overflow: hidden;
+  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  background: #ECE9E6;
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+}
+
+.singleReviewImage{
+  max-width: 100%;
+  max-height: 10%;
+  display: center;
+  object-fit: cover;
+}
+
 .reviewCard {
   display: flex;
   flex-direction: column;
@@ -99,8 +125,6 @@
   border-radius: 1em;
   background: #ECE9E6;
 background: linear-gradient(to right, #FFFFFF, #ECE9E6);
-
-
 }
 
 .reviewImage{
@@ -126,22 +150,27 @@ background: linear-gradient(to right, #FFFFFF, #ECE9E6);
 
 
 .commentCard{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 90%;
-  margin: 3%;
-  text-align: left;
-  text-indent: 1em;
-  font-family: arial;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  overflow: hidden;
+  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  background: #ECE9E6;
+background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+margin-top: 1rem;
 }
 
 .commentPoster{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 90%;
-  height: 8em;
-  margin: 3%;
-  text-align: left;
-  text-indent: 1em;
-  font-family: arial;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  overflow: hidden;
+  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  background: #ECE9E6;
+background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+margin-top: 1rem;
 }
 
 .commentBox{

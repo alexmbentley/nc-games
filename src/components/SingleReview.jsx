@@ -41,10 +41,10 @@ const SingleReview = () => {
 
   if (Object.hasOwn(singleReview, 'review_id'))
     return (
-      <div>
+      <div className="singleReviewPage">
         <h2 className="pageTitle">Review</h2>
-        <SingleReviewCard key={singleReview.review_id} review={singleReview} />
 
+        <SingleReviewCard key={singleReview.review_id} review={singleReview} />
         <CommentPoster
           key={singleReview.votes}
           reviewId={singleReview.review_id}
