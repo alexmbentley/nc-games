@@ -14,14 +14,13 @@ const NavBar = ({ everyReview }) => {
     <div>
       <section className="navBar">
         <Link to="/reviews">
-          <p>All Reviews</p>
+          <p className="navCategories">All Reviews</p>
         </Link>
-      </section>
-      <section className="navBar">
+        <p className="navCategories">Categories: </p>
         {categories.map((category) => {
           return (
             <Link key={category.slug} to={`/reviews/category/${category.slug}`}>
-              <p>
+              <p className="navCategories">
                 {category.slug.charAt(0).toUpperCase() + category.slug.slice(1)}
               </p>
             </Link>

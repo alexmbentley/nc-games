@@ -10,16 +10,17 @@ import Home from './components/Home';
 function App() {
   return (
     <BrowserRouter>
-      <div className="App"></div>
-      <Header />
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/reviews" element={<AllReviews />} />
-        <Route path="/reviews/category/:category" element={<AllReviews />} />
-        <Route path="/reviews/id/:id" element={<SingleReview />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
+      <div className="App">
+        <Header />
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/reviews" element={<AllReviews />} />
+          <Route path="/reviews/category/:category" element={<AllReviews />} />
+          <Route path="/reviews/id/:id" element={<SingleReview />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

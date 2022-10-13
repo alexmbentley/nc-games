@@ -14,7 +14,7 @@ const ReviewCard = ({ review }) => {
       ></img>
       <p>Game Designer: {review.designer}</p>
       <p>Posted on: {review.created_at.substring(0, 10)}</p>
-      <p>{review.review_body}</p>
+      <p className="reviewBody">{review.review_body}</p>
     </div>
   );
 };

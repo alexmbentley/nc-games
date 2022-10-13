@@ -30,7 +30,7 @@ const AllReviews = () => {
   if (isError) return <h3>Category does not exist</h3>;
 
   return (
-    <div>
+    <div className="cardPage">
       <h2 className="pageTitle">Reviews</h2>
       <label>
         <label>
@@ -60,10 +60,11 @@ const AllReviews = () => {
           <option value="desc">Descending</option>
         </select>
       </label>
-
-      {everyReview.map((review) => (
-        <ReviewCard key={review.review_id} review={review} />
-      ))}
+      <div className="grid-container">
+        {everyReview.map((review) => (
+          <ReviewCard key={review.review_id} review={review} />
+        ))}
+      </div>
     </div>
   );
 };
