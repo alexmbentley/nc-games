@@ -42,30 +42,43 @@ const SingleReview = () => {
   if (Object.hasOwn(singleReview, 'review_id'))
     return (
       <div className="singleReviewPage">
-        <h2 className="pageTitle">Review</h2>
-
-        <SingleReviewCard key={singleReview.review_id} review={singleReview} />
-        <CommentPoster
-          key={singleReview.votes}
-          reviewId={singleReview.review_id}
-          setComments={setComments}
-          user={user}
-        />
-        {comments.length !== 0 ? (
-          <div>
-            {comments.map((comment) => (
-              <CommentCard
-                key={comment.comment_id}
-                comment={comment}
+        <h2 className="pageTitle m-3">Review</h2>
+        <div className="container">
+          <div className="row">
+            <SingleReviewCard
+              key={singleReview.review_id}
+              review={singleReview}
+            />
+          </div>
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="">
+              <CommentPoster
+                key={singleReview.votes}
+                reviewId={singleReview.review_id}
+                setComments={setComments}
                 user={user}
               />
-            ))}
+
+              {comments.length !== 0 ? (
+                <div>
+                  {comments.map((comment) => (
+                    <CommentCard
+                      key={comment.comment_id}
+                      comment={comment}
+                      user={user}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <>
+                  <p className="commentCard">No Comments for this post</p>
+                </>
+              )}
+            </div>
           </div>
-        ) : (
-          <>
-            <p className="commentCard">No Comments for this post</p>
-          </>
-        )}
+        </div>
       </div>
     );
 

@@ -33,22 +33,29 @@ const CommentPoster = ({ reviewId, setComments, user }) => {
   };
 
   return (
-    <div className="commentPoster">
-      <form onSubmit={handleSubmit}>
-        <label>
-          {commentComplete}
-          <textarea
-            value={formBody}
-            onChange={(event) => setFormBody(event.target.value)}
-            className="commentBox"
-            type="text"
-            name="comment"
-          />
-        </label>
-        <button disabled={textDisabled || isLoading} type="sumbit">
-          Submit
-        </button>
-      </form>
+    <div className="container">
+      <div className="row">
+        <div className="col-12 card m-2">
+          <form onSubmit={handleSubmit}>
+            <label className="m-1">{commentComplete}</label>
+            <textarea
+              rows="3"
+              value={formBody}
+              onChange={(event) => setFormBody(event.target.value)}
+              className=" commentBox"
+              type="text"
+              name="comment"
+            />
+            <button
+              className="m-1 btn btn-light"
+              disabled={textDisabled || isLoading}
+              type="sumbit"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

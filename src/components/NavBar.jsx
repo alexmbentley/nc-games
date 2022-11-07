@@ -14,36 +14,44 @@ const NavBar = ({ everyReview }) => {
   }, []);
 
   return (
-    <Navbar bg="light" expand="lg">
-      <Container fluid>
-        <Navbar.Brand href="/">Home</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-            <Nav.Link href="/reviews">All Reviews</Nav.Link>
-            <NavDropdown title="Categories" id="navbarScrollingDropdown">
-              {categories.map((category) => {
-                return (
-                  <NavDropdown.Item
-                    key={category.slug}
-                    href={`/reviews/category/${category.slug}`}
-                  >
-                    <p>
-                      {category.slug.charAt(0).toUpperCase() +
-                        category.slug.slice(1)}
-                    </p>
-                  </NavDropdown.Item>
-                );
-              })}
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
+    <div className="bg-light">
+      <Container>
+        <div className="row">
+          <div className="col-12">
+            <Navbar className="rounded" bg="light" expand="lg">
+              <Navbar.Brand className="text-center m-2" href="/">
+                Home
+              </Navbar.Brand>
+              <Navbar.Toggle aria-controls="navbarScroll" />
+              <Navbar.Collapse id="navbarScroll">
+                <Nav
+                  className="me-auto my-2 my-lg-0"
+                  style={{ maxHeight: '40vh' }}
+                  navbarScroll
+                >
+                  <Nav.Link href="/reviews">All Reviews</Nav.Link>
+                  <NavDropdown title="Categories" id="navbarScrollingDropdown">
+                    {categories.map((category) => {
+                      return (
+                        <NavDropdown.Item
+                          key={category.slug}
+                          href={`/reviews/category/${category.slug}`}
+                        >
+                          <p>
+                            {category.slug.charAt(0).toUpperCase() +
+                              category.slug.slice(1)}
+                          </p>
+                        </NavDropdown.Item>
+                      );
+                    })}
+                  </NavDropdown>
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>
+          </div>
+        </div>
       </Container>
-    </Navbar>
+    </div>
   );
 };
 

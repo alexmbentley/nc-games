@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { getReviews } from './Api';
 import ReviewCard from './ReviewCard';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 const AllReviews = () => {
   const param = useParams();
@@ -11,6 +11,8 @@ const AllReviews = () => {
   const [isError, setIsError] = useState(false);
   const [sortBy, setSortBy] = useState();
   const [orderBy, setOrderBy] = useState('desc');
+
+  const location = useLocation();
 
   useEffect(() => {
     getReviews(param, sortBy, orderBy)
@@ -31,11 +33,19 @@ const AllReviews = () => {
 
   return (
     <div className="cardPage">
-      <h2 className="mt-2 pageTitle">Reviews</h2>
+      {location.pathname === '/reviews' ? (
+        <h2 className="m-2">All Reviews</h2>
+      ) : (
+        <h2>
+          {everyReview[0].category.charAt(0).toUpperCase() +
+            everyReview[0].category.slice(1)}{' '}
+          reviews
+        </h2>
+      )}
       <div className="mb-2">
         <label>
           <label className="p-2">
-            Sort By:
+            Sort By:{' '}
             <select
               className="sortDrop"
               onChange={(e) => {
@@ -49,7 +59,7 @@ const AllReviews = () => {
               <option value="votes">Votes</option>
             </select>
           </label>
-          Order:
+          Order:{' '}
           <select
             className="sortDrop"
             onChange={(e) => {
@@ -65,7 +75,7 @@ const AllReviews = () => {
       <div className="container">
         <div className="row">
           {everyReview.map((review) => (
-            <div className="col-lg-4 mb-4">
+            <div key={review.review_id} className="col-lg-4 mb-4">
               <ReviewCard key={review.review_id} review={review} />
             </div>
           ))}

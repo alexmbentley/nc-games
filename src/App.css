@@ -1,7 +1,25 @@
 .App {
   text-align: center;
+
+
 }
 
+.header{
+  background-image: url("https://thumbs.dreamstime.com/b/synthwave-neon-background-retrowave-perspective-grid-dark-retro-future-backdrop-glowing-laser-s-wallpaper-party-flyer-poster-cover-225033045.jpg");
+  background-size:100% auto;
+
+}
+
+.headerText{
+  color: rgb(255, 255, 255);
+  font-weight:bolder;
+
+  font-size: 300%;
+}
+
+.navigationBar{
+  background-color: aqua;
+}
 .card-text{
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -20,3 +38,14 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.singleReviewImage{
+  width: 100%;
+  height: 45vh;
+  object-fit: cover;
+}
+
+.commentBox{
+  width: 100%;
+}
+
