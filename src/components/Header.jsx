@@ -1,8 +1,14 @@
+import { Link } from 'react-router-dom';
+
 const Header = () => {
   return (
-    <div>
-      <h1 className="header">NC Game Reviews</h1>
-    </div>
+    <header className="py-3">
+      <div>
+        <Link className="text-decoration-none text-dark" to="/">
+          <h1>NC Game Reviews</h1>
+        </Link>
+      </div>
+    </header>
   );
 };
 

@@ -10,7 +10,7 @@ const AllReviews = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [sortBy, setSortBy] = useState();
-  const [orderBy, setOrderBy] = useState('asc');
+  const [orderBy, setOrderBy] = useState('desc');
 
   useEffect(() => {
     getReviews(param, sortBy, orderBy)
@@ -31,39 +31,45 @@ const AllReviews = () => {
 
   return (
     <div className="cardPage">
-      <h2 className="pageTitle">Reviews</h2>
-      <label>
+      <h2 className="mt-2 pageTitle">Reviews</h2>
+      <div className="mb-2">
         <label>
-          Sort By:
+          <label className="p-2">
+            Sort By:
+            <select
+              className="sortDrop"
+              onChange={(e) => {
+                setSortBy(e.target.value);
+              }}
+              value={sortBy}
+            >
+              <option value="created_at">Date</option>
+              <option value="title">Title</option>
+              <option value="owner">User</option>
+              <option value="votes">Votes</option>
+            </select>
+          </label>
+          Order:
           <select
             className="sortDrop"
             onChange={(e) => {
-              setSortBy(e.target.value);
+              setOrderBy(e.target.value);
             }}
-            value={sortBy}
+            value={orderBy}
           >
-            <option value="created_at">Date</option>
-            <option value="title">Title</option>
-            <option value="owner">User</option>
-            <option value="votes">Votes</option>
+            <option value="desc">Descending</option>
+            <option value="asc">Ascending</option>
           </select>
         </label>
-        Order:
-        <select
-          className="sortDrop"
-          onChange={(e) => {
-            setOrderBy(e.target.value);
-          }}
-          value={orderBy}
-        >
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
-        </select>
-      </label>
-      <div className="grid-container">
-        {everyReview.map((review) => (
-          <ReviewCard key={review.review_id} review={review} />
-        ))}
+      </div>
+      <div className="container">
+        <div className="row">
+          {everyReview.map((review) => (
+            <div className="col-lg-4 mb-4">
+              <ReviewCard key={review.review_id} review={review} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
