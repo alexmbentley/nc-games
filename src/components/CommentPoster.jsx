@@ -35,7 +35,7 @@ const CommentPoster = ({ reviewId, setComments, user }) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-12 card m-2">
+        <div className="col-12 card my-2">
           <form onSubmit={handleSubmit}>
             <label className="m-1">{commentComplete}</label>
             <textarea
