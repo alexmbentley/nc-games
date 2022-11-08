@@ -56,7 +56,6 @@ const AllReviews = () => {
               <option value="created_at">Date</option>
               <option value="title">Title</option>
               <option value="owner">User</option>
-              <option value="votes">Votes</option>
             </select>
           </label>
           Order:{' '}

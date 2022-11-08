@@ -63,6 +63,7 @@ const SingleReview = () => {
 
               {comments.length !== 0 ? (
                 <div>
+                  <h4 className="text-start">Comments</h4>
                   {comments.map((comment) => (
                     <CommentCard
                       key={comment.comment_id}

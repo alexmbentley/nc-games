@@ -15,7 +15,7 @@ const NavBar = ({ everyReview }) => {
 
   return (
     <div className="bg-light">
-      <Container>
+      <Container className="navigationBar">
         <div className="row">
           <div className="col-12">
             <Navbar className="rounded" bg="light" expand="lg">

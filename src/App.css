@@ -1,12 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap');
+
+
 .App {
   text-align: center;
-
+  font-family: 'Oswald', sans-serif;
 
 }
 
 .header{
   background-image: url("https://thumbs.dreamstime.com/b/synthwave-neon-background-retrowave-perspective-grid-dark-retro-future-backdrop-glowing-laser-s-wallpaper-party-flyer-poster-cover-225033045.jpg");
   background-size:100% auto;
+  font-weight: 400;
 
 }
 
@@ -18,7 +22,7 @@
 }
 
 .navigationBar{
-  background-color: aqua;
+  font-weight: 500;
 }
 .card-text{
   display: -webkit-box;
