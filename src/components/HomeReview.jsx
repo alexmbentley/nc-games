@@ -1,8 +1,8 @@
 const HomeReview = ({ review }) => {
   return (
-    <div>
+    <div className="card p-1 shadow">
       <div className="row">
-        <div className="col-md-7 col-xs-6 px-3">
+        <div className="col-md-7 col-xs-6">
           <div className="">
             <h4 className="mx-1 my-3 text-start">Today's Featured Review</h4>
             <h3 className="mx-1 my-3 text-start">{review.title}</h3>
@@ -17,9 +17,9 @@ const HomeReview = ({ review }) => {
             </div>
           </div>
         </div>
-        <div className="col-md-5 text-center">
+        <div className="col-md-5">
           <img
-            className="rounded singleReviewImage"
+            className="flex-row-reverse singleReviewImage"
             src={review.review_img_url}
             alt={review.title}
           />

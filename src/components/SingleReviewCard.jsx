@@ -1,7 +1,7 @@
 const SingleReviewCard = ({ review }) => {
   return (
     <div>
-      <div className="col-12 card my-2">
+      <div className="col-12  shadow card my-2">
         <div className="row">
           <div className="col-md-7 col-xs-6 px-3">
             <div className="">
@@ -21,7 +21,7 @@ const SingleReviewCard = ({ review }) => {
           </div>
           <div className="col-md-5 text-center">
             <img
-              className="rounded singleReviewImage"
+              className="singleReviewImage"
               src={review.review_img_url}
               alt={review.title}
             />

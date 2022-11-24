@@ -26,11 +26,11 @@ const Home = () => {
         <div className="row">
           <h2 className="mt-2">Welcome to NC Game reviews!</h2>
           <p>Created by Alex Bentley</p>
-          <div className="col-md-8 col-sx-12 card mt-3">
+          <div className="col-md-8 col-sx-12  mt-3">
             <HomeReview key={singleReview.review_id} review={singleReview} />
           </div>
           <div className="col-1"></div>
-          <div className="col-md-3 col-sx-12 card mt-3">
+          <div className="col-md-3 col-sx-12 shadow card mt-3">
             <h3 className="text-decoration-underline m-3">Categories</h3>
 
             <Link

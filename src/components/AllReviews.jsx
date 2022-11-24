@@ -34,9 +34,9 @@ const AllReviews = () => {
   return (
     <div className="cardPage">
       {location.pathname === '/reviews' ? (
-        <h2 className="m-2">All Reviews</h2>
+        <h2 className="m-3">All Reviews</h2>
       ) : (
-        <h2>
+        <h2 className="m-3">
           {everyReview[0].category.charAt(0).toUpperCase() +
             everyReview[0].category.slice(1)}{' '}
           reviews
@@ -74,7 +74,7 @@ const AllReviews = () => {
       <div className="container">
         <div className="row">
           {everyReview.map((review) => (
-            <div key={review.review_id} className="col-lg-4 mb-4">
+            <div key={review.review_id} className="col-lg-4  mb-4">
               <ReviewCard key={review.review_id} review={review} />
             </div>
           ))}

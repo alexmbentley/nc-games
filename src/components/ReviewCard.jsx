@@ -1,6 +1,6 @@
 const ReviewCard = ({ review }) => {
   return (
-    <div className="card">
+    <div className="card shadow">
       <img
         src={review.review_img_url}
         alt={review.title}

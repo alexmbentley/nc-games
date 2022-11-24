@@ -15,14 +15,14 @@ const CommentCard = ({ comment, user }) => {
     return (
       <div className="commentCard">
         {commentDeleted ? (
-          <div className="card my-3">
+          <div className="card shadow my-3">
             <h4 className="my-3">Comment Deleted</h4>
           </div>
         ) : (
           <>
             <div className="container">
               <div className="row d-flex justify-content-center">
-                <div className="col-12 card m-2">
+                <div className="col-12 shadow card m-2">
                   <div className=" mt-2 d-flex flex-start align-items-center">
                     <h5 className="fw-bold">{comment.author}</h5>
                     <div>
@@ -55,7 +55,7 @@ const CommentCard = ({ comment, user }) => {
     return (
       <div className="container">
         <div className="row d-flex justify-content-center">
-          <div className="col-12 card m-2">
+          <div className="col-12 shadow card m-2">
             <div className=" mt-2 d-flex flex-start align-items-center">
               <h5 className="fw-bold">{comment.author}</h5>
               <div>

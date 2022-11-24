@@ -14,7 +14,7 @@ const NavBar = ({ everyReview }) => {
   }, []);
 
   return (
-    <div className="bg-light">
+    <div className="bg-light shadow">
       <Container className="navigationBar">
         <div className="row">
           <div className="col-12">
